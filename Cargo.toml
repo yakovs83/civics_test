@@ -1,0 +1,9 @@
+[package]
+name = "civics_test"
+version = "0.1.0"
+authors = ["Sergey"]
+edition = "2018"
+
+[dependencies]
+regex = "1"
+rand = "0.6"
