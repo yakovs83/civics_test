@@ -47,26 +47,6 @@ fn load_questions(filename: &Path) -> Vec<Question> {
 fn main() {
     let filename = Path::new(".\\data\\questions.txt");
     let mut result = load_questions(&filename);
-    // let is_question = Regex::new(r"^\d{1,3}\.").unwrap();
-    // let reader = File::open(filename).map(|f| BufReader::new(f)).unwrap();
-    // let mut result: Vec<Question> = Vec::new();
-    // let mut acc: Vec<String> = Vec::new();
-
-    // for item in reader.lines() {
-    //     let line = item.unwrap();
-    //     match (is_question.is_match(&line), acc.is_empty()) {
-    //         (true, false) => {
-    //             let ans: Vec<String> = acc.drain(1..).collect();
-    //             result.push(Question::new(acc[0].clone(), ans));
-    //             acc[0] = line;
-    //         }
-    //         (false, true) => panic!(
-    //             "Something went wrong for line\n{}\nresult is {:?}\nacc is {:?}",
-    //             line, result, acc
-    //         ),
-    //         _ => acc.push(line),
-    //     }
-    // }
     let mut rng = thread_rng();
     result.shuffle(&mut rng);
     result.iter().for_each(|r| println!("{:?}", r));
