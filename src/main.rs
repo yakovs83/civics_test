@@ -2,6 +2,7 @@ use rand::seq::SliceRandom;
 use rand::thread_rng;
 use regex::Regex;
 use std::fs::File;
+use std::io;
 use std::io::{BufRead, BufReader};
 use std::path::Path;
 
@@ -49,5 +50,11 @@ fn main() {
     let mut result = load_questions(&filename);
     let mut rng = thread_rng();
     result.shuffle(&mut rng);
-    result.iter().for_each(|r| println!("{:?}", r));
+    let mut input = String::new();
+    result.iter().for_each(|r| {
+        println!("{}", r.question);
+        io::stdin().read_line(&mut input);
+        println!("Answers are:");
+        r.answers.iter().for_each(|a| println!("{}", a));
+    });
 }
